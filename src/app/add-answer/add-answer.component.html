@@ -1,0 +1,48 @@
+<div style="width:400px">
+    <div class="mb-4">
+        <small>Your question was:</small>
+        <h4>{{appValues?.question}}</h4>
+    </div>
+
+    <div class="mb-2" *ngIf="appValues?.mode">
+        <input
+            type="text"
+            class="form-control mb-2"
+            placeholder="Add answer"
+            #custom
+        >
+        <button 
+            type="button"
+            class="btn btn-outline-secondary btn-block mb-2" 
+            (click)="addCustomAnswer(custom)"
+        >Add</button>
+
+        <div>
+            <span 
+                *ngFor="let custom of appValues!.custom"
+                class="btn btn-outline-primary btn-small mr-2 mb-2"
+            >
+                {{custom}}
+            </span>
+        </div>
+             
+    </div>
+    <hr/>
+
+    <div class="form-group">
+        <button 
+            type="button"
+            class="btn btn-outline-info btn-block"
+            (click)="changeMode()"
+            *ngIf="!appValues!.mode"
+        >Add My Own Answers</button>
+        
+        <button
+            type="button"
+            class="btn btn-outline-info btn-block"
+            (click)="getResults()"
+        >Make a Decision</button>
+    </div>
+
+    
+</div>
